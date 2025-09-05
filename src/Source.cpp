@@ -35,4 +35,6 @@ int main()
     free(str_cp1);
     free(str_cp2);
     free(str_cp3);
+
+    printf("\n\n\nCommit GitHub\n\n");
 }
