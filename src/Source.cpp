@@ -1,3 +1,5 @@
+//TODO - make asserts
+
 #include "My_stdio.h"
 #include "My_string.h"
 #include "My_stdlib.h"

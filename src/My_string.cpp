@@ -1,7 +1,7 @@
 #include "My_string.h"
 #include <stdlib.h>
 
-char *My_strchr(const char *str, int const ch) //TODO - bad conversations
+char *My_strchr(const char *str, int const ch)
 {
     for (; *str != '\0'; ++str)
     {
@@ -45,7 +45,7 @@ char *My_strcpy(char *__restrict dest, const char *__restrict src)
 char *My_strncpy(char *__restrict dest, const char *__restrict src, size_t count)
 {
     char *const ret_val = dest;
-    for (; count and *src != '\0'; --count) //TODO - weak spot
+    for (; count and *src != '\0'; --count) //TODO - Non standard
     {
         *dest++ = *src++;
     }
@@ -82,7 +82,7 @@ char *My_strncat(char *__restrict dest, const char *__restrict src, size_t count
     return ret_val;
 }
 
-char *My_strdup(char const *src) //TODO - I can't set errno
+char *My_strdup(char const *src)
 {
     char *const dest = (char *) malloc(My_strlen(src) * sizeof(char));
     if (!dest)
