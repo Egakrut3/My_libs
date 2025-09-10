@@ -3,7 +3,13 @@
 #include "My_stdlib.h"
 #include <stdlib.h>
 
-int main()
+/*!
+ *An entry point for the program
+
+ *\param[in] argc Count of command-line arguments
+ *\param[in] argv Command-line arguments themselves
+ */
+int main(int const argc, char const *const *const argv)
 {
     char const *const str = "Hello";
     My_puts(str);

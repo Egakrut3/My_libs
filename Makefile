@@ -1,12 +1,12 @@
-BIN_DIR = ./bin
+BIN_DIR = ./bin/
 BIN_SUF = .o
 make_bin_path = $(addprefix $(BIN_DIR), $(addsuffix $(BIN_SUF), $(1)))
 
-SRC_DIR = ./src
+SRC_DIR = ./src/
 SRC_SUF = .cpp
 make_src_path = $(addprefix $(SRC_DIR), $(addsuffix $(SRC_SUF), $(1)))
 
-H_DIR = ./include
+H_DIR = ./include/
 
 CXX = g++
 CXX_FLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline   \
@@ -19,7 +19,7 @@ CXX_FLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-
 
 TARGET = $(addprefix $(BIN_DIR), /my_libs.exe)
 
-OBJ = /My_stdio /My_string /My_stdlib /Source
+OBJ = My_stdio My_string My_stdlib main
 
 make_object = $(call make_bin_path, $(1)) : $(call make_src_path, $(1)); \
 @$(CXX) $(CXX_FLAGS) -c $$< -I $(H_DIR) -o $$@
@@ -33,15 +33,13 @@ all : prepare $(call make_bin_path, $(OBJ))
 prepare :
 	@mkdir -p bin
 
-#TODO - Don't works
+$(call make_object, My_stdio)
 
-$(call make_object, /My_stdio)
+$(call make_object, My_string)
 
-$(call make_object, /My_string)
+$(call make_object, My_stdlib)
 
-$(call make_object, /My_stdlib)
-
-$(call make_object, /Source)
+$(call make_object, main)
 
 clean:
 	@rm -rf bin Documentation

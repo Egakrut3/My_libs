@@ -41,14 +41,7 @@ int My_atoi(char const *str)
         cur_c = *str++;
     }
 
-    if (is_neg)
-    {
-        return -cur_abs;
-    }
-    else
-    {
-        return +cur_abs;
-    }
+    return is_neg ? -cur_abs : +cur_abs;
 }
 
 
