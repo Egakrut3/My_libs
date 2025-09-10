@@ -1,5 +1,3 @@
-//TODO - make asserts
-
 #include "My_stdio.h"
 #include "My_string.h"
 #include "My_stdlib.h"
@@ -34,9 +32,14 @@ int main()
     char *const str_cp3 = My_strdup(str_cp1);
     printf("%s\n", str_cp3);
 
+    My_getline(inp_f, str_cp1, '\n');
+    printf("%s\n", str_cp1);
+
     free(str_cp1);
     free(str_cp2);
     free(str_cp3);
+
+    fclose(inp_f);
 
     printf("\n\n\nCommit GitHub\n\n");
 }

@@ -3,6 +3,8 @@
 
 int My_atoi(char const *str)
 {
+    assert(str);
+
     while (isspace(*str))
     {
         ++str;

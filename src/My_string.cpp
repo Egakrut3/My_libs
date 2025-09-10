@@ -3,9 +3,11 @@
 
 char *My_strchr(const char *str, int const ch)
 {
+    assert(str);
+
     for (; *str != '\0'; ++str)
     {
-        if (*str == ch)
+        if (*str == (char) ch)
         {
             return (char *) str;
         }
@@ -21,6 +23,8 @@ char *My_strchr(const char *str, int const ch)
 
 size_t My_strlen(const char *str)
 {
+    assert(str);
+
     size_t cur_len = 0;
     while (*str++ != '\0')
     {
@@ -32,6 +36,8 @@ size_t My_strlen(const char *str)
 
 char *My_strcpy(char *__restrict dest, const char *__restrict src)
 {
+    assert(dest and src);
+
     char *const ret_val = dest;
     while (*src != '\0')
     {
@@ -44,8 +50,10 @@ char *My_strcpy(char *__restrict dest, const char *__restrict src)
 
 char *My_strncpy(char *__restrict dest, const char *__restrict src, size_t count)
 {
+    assert(dest and src);
+
     char *const ret_val = dest;
-    for (; count and *src != '\0'; --count) //TODO - Non standard
+    for (; count and *src != '\0'; --count)
     {
         *dest++ = *src++;
     }
@@ -60,6 +68,8 @@ char *My_strncpy(char *__restrict dest, const char *__restrict src, size_t count
 
 char *My_strcat(char *__restrict dest, const char *__restrict src)
 {
+    assert(dest and src);
+
     char *const ret_val = dest;
     for (dest = My_strchr(dest, '\0'); *src != '\0';)
     {
@@ -72,6 +82,8 @@ char *My_strcat(char *__restrict dest, const char *__restrict src)
 
 char *My_strncat(char *__restrict dest, const char *__restrict src, size_t count)
 {
+    assert(dest and src);
+
     char *const ret_val = dest;
     for (dest = My_strchr(dest, '\0'); count-- and *src != '\0';)
     {
@@ -84,11 +96,31 @@ char *My_strncat(char *__restrict dest, const char *__restrict src, size_t count
 
 char *My_strdup(char const *src)
 {
+    assert(src);
+
     char *const dest = (char *) malloc(My_strlen(src) * sizeof(char));
+
+    assert(dest);
+
     if (!dest)
     {
         return nullptr;
     }
 
     return My_strcpy(dest, src);
+}
+
+FILE *My_getline(FILE *__restrict const stream, char *__restrict str, char const delim)
+{
+    assert(stream and str);
+
+    int cur_c = fgetc(stream);
+    while (cur_c != EOF and cur_c != delim)
+    {
+        *str++ = (char) cur_c;
+        cur_c = fgetc(stream);
+    }
+
+    *str = '\0';
+    return stream;
 }

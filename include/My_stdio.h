@@ -1,6 +1,7 @@
 #ifndef MY_STDIO_H
 #define MY_STDIO_H
 
+#include "Common.h"
 #include <stdio.h>
 
 int My_puts(char const *str);
