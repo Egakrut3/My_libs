@@ -42,4 +42,5 @@ int main()
     fclose(inp_f);
 
     printf("\n\n\nCommit GitHub\n\n");
+    return 0;
 }
