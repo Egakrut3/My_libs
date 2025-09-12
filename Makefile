@@ -24,7 +24,7 @@ OBJ = My_stdio My_string My_stdlib main
 make_object = $(call make_bin_path, $(1)) : $(call make_src_path, $(1)); \
 @$(CXX) $(CXX_FLAGS) -c $$< -I $(H_DIR) -o $$@
 
-.PHONY : all prepare clean documentation
+.PHONY : all prepare clean
 
 all : prepare $(call make_bin_path, $(OBJ))
 	@$(CXX) $(CXX_FLAGS) $(call make_bin_path, $(OBJ)) -o $(TARGET)
@@ -42,7 +42,4 @@ $(call make_object, My_stdlib)
 $(call make_object, main)
 
 clean:
-	@rm -rf bin Documentation
-
-documentation: Doxyfile
-	@doxygen Doxyfile
+	@rm -rf bin
